@@ -24,6 +24,13 @@ default: &default
 development:
   <<: *default
   database: banderin_development
+  # username: <%= ENV['PG_ENV_POSTGRES_USER'] %>
+  # password: <%= ENV['PG_ENV_POSTGRES_PASSWORD'] %>
+  # host: <%= ENV['PG_PORT_5432_TCP_ADDR'] %>
+  username: postgres
+  password: postgres
+  host: localhost
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -77,9 +84,9 @@ test:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-#
 production:
   <<: *default
-  database: banderin_production
-  username: banderin
-  password: <%= ENV['BANDERIN_DATABASE_PASSWORD'] %>
+  database: todo_production
+  username: <%= ENV['PG_ENV_POSTGRES_USER'] %>
+  password: <%= ENV['PG_ENV_POSTGRES_PASSWORD'] %>
+  host: <%= ENV['PG_PORT_5432_TCP_ADDR'] %>
